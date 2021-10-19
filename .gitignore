@@ -1,3 +1,6 @@
+# Built images
+*.smc
+
 # Prerequisites
 *.d
 

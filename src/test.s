@@ -17,9 +17,9 @@ reset:
   bpl @loop
 
   ; Set background color to $03E0
-  lda #$E0
+  lda #$12
   sta $2122
-  lda #$03
+  lda #$24
   sta $2122
 
   ; Maximum screen brightness
