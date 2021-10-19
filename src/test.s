@@ -7,24 +7,25 @@
 .include "test.inc"
 
 reset:
-  init_cpu
+    init_cpu
 
-; Clear PPU registers
-  ldx #$33
-@loop:  stz $2100,x
-  stz $4200,x
-  dex
-  bpl @loop
+    ; Clear PPU registers
+    ldx #$33
 
-  ; Set background color to $03E0
-  lda #$12
-  sta $2122
-  lda #$24
-  sta $2122
+@loop:
+    stz $2100,x
+    stz $4200,x
+    dex
+    bpl @loop
 
-  ; Maximum screen brightness
-  lda #$0F
-  sta $2100
+    lda #$12
+    sta $2122
+    lda #$24
+    sta $2122
+
+    ; Maximum screen brightness
+    lda #$0F
+    sta $2100
 
 forever:
-  jmp forever
+    jmp forever

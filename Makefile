@@ -9,7 +9,10 @@ SRCDIR := src
 SRCS := $(wildcard src/*.s)
 OBJS := $(SRCS:$(SRCDIR)/%.s=$(OBJDIR)/%.o)
 
-all: $(TARGET)
+all: run
+
+run: $(TARGET)
+	$(SNES) $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(LINKER) -C $(CONFIG) $< -o $(TARGET)
@@ -17,9 +20,6 @@ $(TARGET): $(OBJS)
 $(OBJS): $(OBJDIR)/%.o: $(SRCDIR)/%.s
 	$(ASSEMBLER) -I$(INCDIR) $< -o $@
 
-.PHONY: run clean
-run:
-	$(SNES) $(TARGET)
-
+.PHONY: clean
 clean:
 	rm -rf obj/*.o
